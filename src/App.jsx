@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import './App.css'
 import { useState } from 'react'
 import SingleProduct from './SingleProduct'
+import CartAdd from './CartAdd';
 
 function App() {
   const [product, setProducts] = useState([]);
@@ -55,12 +56,10 @@ function App() {
           <div >
             {
               cart.map((item,index) => (
-                <div className="cart-info">
-                  <h5>{index+1}</h5>
-                  <h5>{item.title.slice(0, 10)}</h5>
-                  <h5>{item.price} </h5>
-                  <button onClick={()=>handleDelete(item.id)}>Delete</button>
-                </div>
+                <CartAdd key={item.id}
+                 item={item}
+                 index={index}
+                 handleDelete={handleDelete}></CartAdd>
 
               ))
             }
